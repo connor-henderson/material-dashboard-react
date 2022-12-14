@@ -50,6 +50,7 @@ export default styled(Drawer)(({ theme, ownerState }) => {
       marginBottom: transparentSidenav ? 0 : "inherit",
       left: "0",
       width: sidebarWidth,
+      height: "fit-content",
       transform: "translateX(0)",
       transition: transitions.create(["width", "background-color"], {
         easing: transitions.easing.sharp,
@@ -72,6 +73,7 @@ export default styled(Drawer)(({ theme, ownerState }) => {
       marginBottom: transparentSidenav ? 0 : "inherit",
       left: "0",
       width: pxToRem(96),
+      height: "fit-content",
       overflowX: "hidden",
       transform: "translateX(0)",
       transition: transitions.create(["width", "background-color"], {

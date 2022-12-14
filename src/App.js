@@ -47,7 +47,12 @@ import createCache from "@emotion/cache";
 import routes from "routes";
 
 // Material Dashboard 2 React contexts
-import { useMaterialUIController, setMiniSidenav, setOpenConfigurator } from "context";
+import {
+  useMaterialUIController,
+  setMiniSidenav,
+  setOpenConfigurator,
+  setWhiteSidenav,
+} from "context";
 
 // Images
 import brandWhite from "assets/images/logo-ct.png";
@@ -66,6 +71,12 @@ export default function App() {
     darkMode,
   } = controller;
   const [onMouseEnter, setOnMouseEnter] = useState(false);
+
+  // resizing causes change of sidenav color
+  useEffect(() => {
+    setWhiteSidenav(dispatch, !darkMode);
+  }, [darkMode]);
+
   const [rtlCache, setRtlCache] = useState(null);
   const { pathname } = useLocation();
 

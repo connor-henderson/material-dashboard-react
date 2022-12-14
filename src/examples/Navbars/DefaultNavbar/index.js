@@ -39,10 +39,22 @@ import breakpoints from "assets/theme/base/breakpoints";
 
 // Material Dashboard 2 React context
 import { useMaterialUIController } from "context";
+import { AppBar, IconButton, Toolbar } from "@mui/material";
+
+// const StyledToolbar = styled(Toolbar)(({ theme, ownerState }) => ({
+//   justifyContent: "space-between",
+//   backgroundColor: ownerState.darkMode
+//     ? theme.palette.background.sidenav
+//     : theme.palette.white.main,
+//   // Override media queries injected by theme.mixins.toolbar
+//   "@media all": {
+//     minHeight: 10,
+//   },
+// }));
 
 function DefaultNavbar({ transparent, light, action }) {
   const [controller] = useMaterialUIController();
-  const { darkMode } = controller;
+  const { darkMode, miniSidenav } = controller;
 
   const [mobileNavbar, setMobileNavbar] = useState(false);
   const [mobileView, setMobileView] = useState(false);
@@ -74,8 +86,30 @@ function DefaultNavbar({ transparent, light, action }) {
     // Remove event listener on cleanup
     return () => window.removeEventListener("resize", displayMobileNavbar);
   }, []);
-
-  return (
+  console.log(mobileView);
+  return true ? (
+    <AppBar position="fixed" backgroundColor="white" zIndex="700">
+      <Toolbar
+        sx={{
+          justifyContent: "space-between",
+          backgroundColor: "background.default",
+        }}
+      >
+        <IconButton
+          size="small"
+          disableRipple
+          color="inherit"
+          onClick={() => setMobileNavbar(!mobileNavbar)}
+        >
+          <Icon fontSize="medium">{miniSidenav ? "menu_open" : "menu"}</Icon>
+        </IconButton>
+        <IconButton size="small" disableRipple color="inherit">
+          <Icon fontSize="medium">account_circle</Icon>
+        </IconButton>
+      </Toolbar>
+      {mobileView && false && <DefaultNavbarMobile open={mobileNavbar} close={closeMobileNavbar} />}
+    </AppBar>
+  ) : (
     <Container>
       <MDBox
         py={1}
@@ -85,7 +119,7 @@ function DefaultNavbar({ transparent, light, action }) {
         width="calc(100% - 48px)"
         borderRadius="lg"
         shadow={transparent ? "none" : "md"}
-        color={light ? "white" : "dark"}
+        color={darkMode ? "white" : "dark"}
         display="flex"
         justifyContent="space-between"
         alignItems="center"
@@ -161,8 +195,6 @@ function DefaultNavbar({ transparent, light, action }) {
         <MDBox
           display={{ xs: "inline-block", lg: "none" }}
           lineHeight={0}
-          py={1.5}
-          pl={1.5}
           color="inherit"
           sx={{ cursor: "pointer" }}
           onClick={openMobileNavbar}
