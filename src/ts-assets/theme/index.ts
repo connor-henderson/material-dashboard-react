@@ -136,25 +136,3 @@ export default createTheme({
     MuiDialogActions: { ...dialogActions },
   },
 });
-
-// TODO: edit the below
-declare module '@mui/material/styles' {
-  // interface Theme {
-  //   status: {
-  //     danger: React.CSSProperties['color'];
-  //   };
-  //   transitions: any;
-  // }
-
-  // interface PaletteColor {
-  //   darker?: string;
-  // }
-  // interface SimplePaletteColorOptions {
-  //   darker?: string;
-  // }
-  // interface ThemeOptions {
-  //   boxShadow: {
-  //     danger: React.CSSProperties['color'];
-  //   };
-  // }
-}
