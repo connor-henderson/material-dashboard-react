@@ -1,5 +1,3 @@
-// @ts-nocheck
-
 /**
 =========================================================
 * Material Dashboard 2 React - v2.1.0
@@ -22,16 +20,7 @@ import { createTheme } from "@mui/material/styles";
 import colors from "./base/colors";
 import breakpoints from "./base/breakpoints";
 import typography from "./base/typography";
-import boxShadows from "./base/boxShadows";
-import borders from "./base/borders";
 import globals from "./base/globals";
-
-// Material Dashboard 2 React helper functions
-import boxShadow from "./functions/boxShadow";
-import hexToRgb from "./functions/hexToRgb";
-import linearGradient from "./functions/linearGradient";
-import pxToRem from "./functions/pxToRem";
-import rgba from "./functions/rgba";
 
 // Material Dashboard 2 React components base styles for @mui material components
 import sidenav from "./components/sidenav";
@@ -89,16 +78,6 @@ export default createTheme({
   breakpoints: { ...breakpoints },
   palette: { ...colors },
   typography: { ...typography },
-  boxShadows: { ...boxShadows },
-  borders: { ...borders },
-  functions: {
-    boxShadow,
-    hexToRgb,
-    linearGradient,
-    pxToRem,
-    rgba,
-  },
-
   components: {
     MuiCssBaseline: {
       styleOverrides: {
@@ -157,3 +136,25 @@ export default createTheme({
     MuiDialogActions: { ...dialogActions },
   },
 });
+
+// TODO: edit the below
+declare module '@mui/material/styles' {
+  // interface Theme {
+  //   status: {
+  //     danger: React.CSSProperties['color'];
+  //   };
+  //   transitions: any;
+  // }
+
+  // interface PaletteColor {
+  //   darker?: string;
+  // }
+  // interface SimplePaletteColorOptions {
+  //   darker?: string;
+  // }
+  // interface ThemeOptions {
+  //   boxShadow: {
+  //     danger: React.CSSProperties['color'];
+  //   };
+  // }
+}
